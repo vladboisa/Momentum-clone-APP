@@ -9,7 +9,7 @@ const optionsForLocaleDate = {
 };
 function showDate(dateTimeObj) {
   const currentDate = dateTimeObj.toLocaleDateString(
-    "ru-RU",
+    "en-US",
     optionsForLocaleDate
   );
   dateElem.textContent = currentDate;
