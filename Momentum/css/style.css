@@ -279,16 +279,36 @@ body {
 }
 
 .change-quote {
-  margin-bottom: 30px;
+  margin-bottom: 8px;
   background-image: url("../assets/svg/reload.svg");  
 }
-
+.quotes {
+  background: #3c393985;
+  padding: 0.5em;
+  border-radius: 1em;
+  
+}
 .quote {
   min-height: 32px;
+}
+.quote::before {
+  content: "“";
+}
+.quote::after {
+  content: "”";
+}
+.quote-error {
+  width: 100%;  
+  margin-top: -10px;
+  color: #712b29;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
 }
 
 .author {
   min-height: 20px;
+  font-style: italic;
 }
 
 @media (max-width: 768px) {
