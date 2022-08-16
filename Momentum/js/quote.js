@@ -10,7 +10,8 @@ async function getQuote() {
     quoteElem.innerHTML = `${data.quote.body}`;
     quoteElem.setAttribute("cite", `${data.quote.url}`);
     authorElem.innerHTML = `&mdash; ${data.quote.author}`;
-    console.log(data.quote);
+    quoteErrElem.textContent = ``;
+    quoteErrElem.classList.remove("error");
   } catch (err) {
     quoteErrElem.textContent = `Connection error for QuotesAPI`;
     quoteErrElem.classList.add("error");

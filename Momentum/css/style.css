@@ -96,7 +96,7 @@ body {
 .change-quote:active {
   border: 0;
   outline: 0;  
-  transform: scale(1.1);
+  transform: scale(1.25);
 }
 
 .play {
@@ -121,7 +121,6 @@ body {
 .weather {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   row-gap: 5px;
   width: 180px;
@@ -144,19 +143,23 @@ body {
   background-color: #f7dddc;
   padding: 0.1rem 0.1rem;
   border: 1px solid #da6561;
+  margin-top: 5px;
 }
 
 .description-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   column-gap: 12px;
-}
-.weather-description, .temperature {
   font-style: italic;
-  font-size: 28px;
+  font-size: 18px;
 }
+.temperature {
+  font-size: 24px;
+  text-align: center;
+}
+
 .weather-icon {
   font-size: 50px;
 }
@@ -286,7 +289,7 @@ body {
   background: #3c393985;
   padding: 0.5em;
   border-radius: 1em;
-  
+  transition: background-color 1s ease-in-out;
 }
 .quote {
   min-height: 32px;
