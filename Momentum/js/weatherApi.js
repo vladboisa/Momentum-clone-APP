@@ -12,9 +12,9 @@ cityInputElem.addEventListener("change", (event) => {
 
 async function getWeather(town = "Minsk") {
   const API_key = `3ca227a7629f53d785660c8f24d59f6d`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=en&appid=${API_key}&units=metric`;
+  const url = `https://cors-anywhere.herokuapp.com/https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=en&appid=${API_key}&units=metric`;
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { headers: {} });
     const data = await res.json();
     if (res.ok) {
       weatherIconElem.className = "weather-icon owf";
