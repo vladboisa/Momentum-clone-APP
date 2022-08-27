@@ -10,7 +10,14 @@ cityInputElem.addEventListener("change", (event) => {
   getWeather(event.target.value);
 });
 
-async function getWeather(town = "Minsk") {
+async function getWeather(
+  //Check town in localstorage if missing setting in default town `Minsk`
+  town = `${
+    localStorage.getItem("town") !== null
+      ? localStorage.getItem("town")
+      : `Minsk`
+  }`
+) {
   const API_key = `3ca227a7629f53d785660c8f24d59f6d`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=en&appid=${API_key}&units=metric`;
   try {
@@ -42,3 +49,18 @@ async function getWeather(town = "Minsk") {
 }
 
 getWeather();
+
+function setLocalStorage() {
+  localStorage.setItem("town", cityInputElem.value);
+}
+// Set local storage before reloaded and closed page
+
+window.addEventListener("beforeunload", setLocalStorage);
+
+// Get local storage before loaded page
+function getLocalStorage() {
+  if (localStorage.getItem("town")) {
+    cityInputElem.value = localStorage.getItem("town");
+  }
+}
+window.addEventListener("load", getLocalStorage);
