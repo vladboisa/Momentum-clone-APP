@@ -39,9 +39,53 @@ body {
 .player-controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: 120px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  flex-wrap: wrap;
+  width: 180px;
   margin-bottom: 28px;
+}
+
+.player-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.styled-progressbar {
+  --height-bar: 15px; 
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 100%; 
+  height: var(--height-bar);
+  border-radius: calc(var(--height-bar)/2);
+  background: hsla(0,0%,100%,.3); 
+  outline: none; 
+  opacity: 0.8;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  box-shadow: 0 0 20px 0 #000a;
+}
+.styled-progressbar:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.styled-progressbar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  appearance: none;
+  height: 15px;
+  width: 15px;
+  background: -webkit-linear-gradient(45deg,  rgb(136, 119, 119), rgb(6, 255, 201));
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+input[type="range"]:hover::-webkit-slider-thumb {
+  height: 15px;
+  width: 7px;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(6, 255, 151));
 }
 
 .play-list {
@@ -298,6 +342,7 @@ body {
   padding: 0.5em;
   border-radius: 1em;
   transition: background-color 1s ease-in-out;
+  overflow: hidden;
 }
 .quote {
   min-height: 32px;
