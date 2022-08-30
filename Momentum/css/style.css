@@ -87,6 +87,10 @@ input[type="range"]:hover::-webkit-slider-thumb {
   width: 7px;
   background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(6, 255, 151));
 }
+.player-currenttime::after {
+  content: " /";
+}
+
 
 .play-list {
   text-align: left;
@@ -363,7 +367,7 @@ input[type="range"]:hover::-webkit-slider-thumb {
 }
 
 .author {
-  min-height: 20px;
+  margin-top: 10px;
   font-style: italic;
 }
 
