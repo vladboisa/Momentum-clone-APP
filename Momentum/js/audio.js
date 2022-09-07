@@ -72,5 +72,9 @@ playPrevElem.addEventListener("click", playPrev);
 playElem.addEventListener("click", playAudio);
 // automatically play the next song at the end of the audio object's duration
 audio.addEventListener("ended", playNext);
+// function where progressBar.value is changed when slider thumb is dragged
+progressBarElem.addEventListener("input", (e) => {
+  audio.currentTime = progressBarElem.value;
+});
 appendPlayList();
 updateProgressValue();

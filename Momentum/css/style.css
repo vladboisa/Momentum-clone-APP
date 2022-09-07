@@ -56,9 +56,10 @@ body {
 
 .styled-progressbar {
   --height-bar: 15px; 
+  --width-bar: 180px;
   -webkit-appearance: none;  
   appearance: none;
-  width: 100%; 
+  width: var(--width-bar); 
   height: var(--height-bar);
   border-radius: calc(var(--height-bar)/2);
   background: hsla(0,0%,100%,.3); 
@@ -67,6 +68,7 @@ body {
   -webkit-transition: .2s;
   transition: opacity .2s;
   box-shadow: 0 0 20px 0 #000a;
+  overflow: hidden;
 }
 .styled-progressbar:hover {
   opacity: 1;
@@ -74,18 +76,33 @@ body {
 }
 .styled-progressbar::-webkit-slider-thumb {
     -webkit-appearance: none;
-  appearance: none;
-  height: 15px;
-  width: 15px;
-  background: -webkit-linear-gradient(45deg,  rgb(136, 119, 119), rgb(6, 255, 201));
-  border-radius: 8px;
+    appearance: none;
+  height: var(--height-bar);
+  width: calc(var(--height-bar)/1.2);
+  border-radius: calc(var(--height-bar)/2);
+  background: -webkit-linear-gradient(45deg,  rgb(190, 167, 167), rgb(12, 124, 79));
   cursor: pointer;
   transition: all 0.2s ease-out;
+  box-shadow: calc(-1 * var(--width-bar)) 0 0 var(--width-bar) #49ca74;
 }
-input[type="range"]:hover::-webkit-slider-thumb {
+input[type='range']::-webkit-slider-runnable-track {
   height: 15px;
-  width: 7px;
-  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(6, 255, 151));
+  -webkit-appearance: none;
+  color: #13bba4;
+  margin-top: -1px;
+}
+.styled-progressbar:hover::-webkit-slider-thumb {
+  width: calc(var(--height-bar)/2);
+  background: -webkit-linear-gradient(45deg,  rgb(255, 252, 252), rgb(222, 238, 225));
+}
+.styled-progressbar::-moz-range-progress {
+  background-color: #7adaad;
+  height: var(--height-bar);
+  border-radius: calc(var(--height-bar)/2);
+}
+.styled-progressbar:hover::-moz-range-progress {
+  background-color: #49ca74;
+
 }
 .player-currenttime::after {
   content: " /";
