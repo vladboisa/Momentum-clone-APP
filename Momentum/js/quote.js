@@ -5,13 +5,18 @@ const changeQuote = document.querySelector(".change-quote");
 
 async function getQuote() {
   try {
-    const res = await fetch("https://favqs.com/api/qotd");
+    const res = await fetch("https://dummyjson.com/quotes/random");
     const data = await res.json();
-    quoteElem.innerHTML = `${data.quote.body}`;
-    quoteElem.setAttribute("cite", `${data.quote.url}`);
-    authorElem.innerHTML = `&mdash; ${data.quote.author}`;
-    quoteErrElem.textContent = ``;
-    quoteErrElem.classList.remove("error");
+    if (res.ok){
+      quoteElem.innerHTML = `${data.quote}`;
+      authorElem.innerHTML = `&mdash; ${data.author}`;
+      quoteElem.setAttribute("cite", `https://dummyjson.com/quotes/${data.id}`);
+      quoteErrElem.textContent = ``;
+      quoteErrElem.classList.remove("error");
+    }
+    else {
+      quoteErrElem.textContent = `${data.message}`;
+    }
   } catch (err) {
     quoteErrElem.textContent = `Connection error for QuotesAPI`;
     quoteErrElem.classList.add("error");
