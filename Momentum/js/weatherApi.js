@@ -9,17 +9,17 @@ const weatherHumidityElem = document.querySelector(".humidity");
 cityInputElem.addEventListener("change", (event) => {
   getWeather(event.target.value);
 });
-
+//Check town in localstorage if missing setting in default town `Minsk`
 async function getWeather(
-  //Check town in localstorage if missing setting in default town `Minsk`
   town = `${
-    localStorage.getItem("town") !== null
-      ? localStorage.getItem("town")
-      : `Minsk`
-  }`
-) {
+    ((localStorage.getItem("town") !== null) && (localStorage.getItem("town") !== ''))
+    ? localStorage.getItem("town")
+    : `Minsk`
+  }`,
+  lang = `ru`
+  ) {
   const API_key = `3ca227a7629f53d785660c8f24d59f6d`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=en&appid=${API_key}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=${lang}&appid=${API_key}&units=metric`;
   try {
     const res = await fetch(url, { headers: {} });
     const data = await res.json();
