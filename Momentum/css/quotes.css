@@ -1,0 +1,49 @@
+.change-quote {
+  margin-bottom: 8px;
+  background-image: url("../assets/svg/reload.svg");
+}
+
+.player-icon:hover,
+.slider-icon:hover,
+.change-quote:hover {
+  opacity: 1;
+}
+
+.player-icon:active,
+.slider-icon:active,
+.change-quote:active {
+  border: 0;
+  outline: 0;
+  transform: scale(1.25);
+}
+
+.quotes {
+  background: #3c393985;
+  padding: 0.5em;
+  border-radius: 1em;
+  transition: background-color 1s ease-in-out;
+  overflow: hidden;
+  font-size: 1vw;
+}
+
+.quote::before {
+  content: "“";
+}
+
+.quote::after {
+  content: "”";
+}
+
+.quote-error {
+  width: 100%;
+  margin-top: -10px;
+  color: #712b29;
+  text-align: center;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.author {
+  margin-top: 25px;
+  font-style: italic;
+}
