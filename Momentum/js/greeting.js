@@ -13,7 +13,6 @@ function getLocalStorage() {
 }
 window.addEventListener("load", getLocalStorage);
 
-const dateObj = new Date();
 export function getTimeOfDay(hours) {
   if (hours < 6) {
     return `night`;
