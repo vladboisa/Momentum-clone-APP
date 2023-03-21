@@ -25,13 +25,11 @@ function preloadBgImages(urlImage) {
 }
 let randomImageNumb = getRandomNumbImages();
 
-function setBackgroundBody(
+async function setBackgroundBody(
   timeOfDay = greeting.getTimeOfDay(dateTimeObj.getHours()),
   randomNumb = randomImageNumb
 ) {
-  const urlPathOfImages = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${String(
-    randomNumb
-  ).padStart(2, "0")}.jpg`; //If number of image 1digit add '0' for url path
+  const urlPathOfImages = `assets/img/${timeOfDay}/${String(randomNumb).padStart(2, "0")}.webp`; //If number of image 1digit add '0' for url path
   preloadBgImages(urlPathOfImages);
   return urlPathOfImages;
 }
