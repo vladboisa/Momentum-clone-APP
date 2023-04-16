@@ -1,5 +1,4 @@
 .change-quote {
-  margin-bottom: 8px;
   background-image: url("../assets/svg/reload.svg");
 }
 
@@ -23,7 +22,7 @@
   border-radius: 1em;
   transition: background-color 1s ease-in-out;
   overflow: hidden;
-  font-size: 1vw;
+  font-size: clamp(0.8125rem, 0.6091rem + 1.0169vw, 1.5625rem);
 }
 
 .quote::before {
@@ -35,7 +34,6 @@
 }
 
 .quote-error {
-  width: 100%;
   margin-top: -10px;
   color: #712b29;
   text-align: center;

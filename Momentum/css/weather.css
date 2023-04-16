@@ -1,16 +1,15 @@
 .weather {
   display: flex;
+  flex: 0 0 35%;
   flex-direction: column;
   align-items: center;
   row-gap: 5px;
-  width: 180px;
-  min-height: 180px;
   text-align: left;
-  font-size: 5.5vw;
+  font-size: clamp(3.75rem, 3.2754rem + 2.3729vw, 5.5rem);
 }
 
 .weather-error {
-  width: 100%;
+  width: 80%;
   margin-top: -10px;
   color: #712b29;
   text-align: center;
@@ -31,26 +30,24 @@
 
 .description-container {
   display: flex;
+  flex-flow: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
   column-gap: 5vw;
-  font-style: italic;
-  font-size: 1.5vw;
+  font-size: clamp(1.0625rem, 0.8761rem + 0.9322vw, 1.75rem);
 }
 
 .temperature {
-  font-size: 3vw;
+  font-size: clamp(1.5rem, 1.3136rem + 0.9322vw, 2.1875rem);
   text-align: center;
 }
 
 .weather-description {
   align-self: center;
-  font-size: 1.5vw;
 }
 
-.weather-icon {
-  font-size: 50px;
+.weather-description::first-letter {
+  text-transform: uppercase;
 }
 
 .weather-icon:hover {
@@ -67,10 +64,8 @@
 }
 
 .city {
-  width: 170px;
-  height: 34px;
   padding: 5px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 24px;
   color: #fff;
   border: 0;

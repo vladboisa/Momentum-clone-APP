@@ -9,10 +9,10 @@
   font-style: normal;
   font-display: swap;
   src: local("OpenSans-Regular"),
-  url("../assets/fonts/OpenSans-Regular.ttf") format('truetype');
+    url("../assets/fonts/OpenSans-Regular.ttf") format('truetype');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-                 U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
-                 U+2212, U+2215, U+FEFF, U+FFFD;
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 
@@ -29,26 +29,21 @@
 }
 
 body {
-  min-width: 320px;
-  min-height: 100vh;
   font-family: Open-Sans, Arial, sans-serif;
-  font-size: 10px;
+  font-size: 10px; /* Apply 10px for comfortable calculating REM */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
   text-align: center;
-  background: center, rgb(0 0 0 / 30%);
+  background: no-repeat url('/assets/img/bg.webp') center center / cover , rgb(0 0 0 / 30%);
   background-blend-mode: hard-light;
   transition: background-image 1s ease-in-out;
+
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  width: 100%;
-  height: 30vh;
-  min-height: 220px;
   padding: 20px 20px 0;
 }
 
@@ -56,11 +51,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 40vh;
-  min-height: 220px;
   padding: 0 20px;
   margin-top: 20px;
 }
@@ -68,7 +59,6 @@ body {
 .slider-icon {
   position: absolute;
   top: 50%;
-  margin-top: -16px;
   cursor: pointer;
 }
 
@@ -83,58 +73,50 @@ body {
 }
 
 .time {
-  min-height: 124px;
-  margin-bottom: 10px;
-  font-size: 9vw;
-  letter-spacing: -4px;
+  margin-bottom: 0.3em;
+  font-size: clamp(4.375rem, 3.3581rem + 5.0847vw, 8.125rem);
 }
 
 .date {
-  min-height: 28px;
-  font-size: 2vw;
+  font-size: clamp(1.1875rem, 0.7977rem + 1.9492vw, 2.625rem);
   margin-bottom: 20px;
 }
 
 .greeting-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: stretch;
   align-items: center;
-  min-height: 48px;
-  width: 100%;
-  font-size: 4rem;
+  font-size: clamp(1.5625rem, 0.9354rem + 3.1356vw, 3.875rem);
 }
 
 .greeting {
-  flex: 1;
+  flex: 0 0 56%;
   padding: 10px;
   text-align: right;
 }
 
 .name {
-  flex: 1;
-  max-width: 50%;
+  flex: 0 1 10%;
+  max-width: 26%;
   padding: 10px;
-  font-size: 4rem;
-  text-align: left;
+  font-size: inherit;
   color: #fff;
   background-color: transparent;
   border: 0;
   outline: 0;
+  border-bottom: 1px solid #fff;
 }
 
 .name::placeholder {
   color: #fff;
   opacity: .7;
+  font-size: clamp(1rem, 0.6271rem + 1.8644vw, 2.375rem);
 }
 
 .footer {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
-  height: 30vh;
-  min-height: 160px;
-  padding: 20px;
+  gap: 10px;
 }

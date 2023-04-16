@@ -1,38 +1,82 @@
-@media screen and (min-width:1440px) {
-  body {
-    background: center/cover, rgb(0 0 0 / 30%);
+/* All styles apply on screen: (min-width:320px) and (max-width:768px) */
+body .header {
+  padding: 10px 10px 0 ;
+}
+
+body .main {
+  padding: 0 10px;
+}
+
+.city {
+  width: 100%;
+}
+
+.play-item {
+  padding: 1px;
+}
+
+.play-list {
+  transform: translate(0,1rem);
+}
+
+.time {
+  margin-bottom: 0;
+}
+
+.slide-prev {
+  left: 10px;
+}
+
+.slide-next {
+  right: 10px;
+}
+
+.greeting {
+  padding: 0 5px 0 0;
+}
+
+.greeting-container {
+  justify-content: center;
+}
+
+.name {
+  padding: 0;
+  max-width: 40%;
+  flex: 0 1 50%;
+  width: 100%;
+}
+
+.quotes {
+  max-height: 100px;
+  overflow: auto;
+  max-width: 90%;
+}
+
+.footer {
+  min-height: 140px;
+  margin-top: 0;
+  justify-content:start;
+}
+
+
+@media (max-width:515px) {
+  .play-list {
+    transform: translate(0,3rem);
   }
 }
 
-@media (min-width:320px) and (max-width:768px){
-  .time {
-    font-size: 16vw;
+@media screen and (max-width:811px){
+  .weather {
+    flex: 0 0 51.5%;
   }
 
-  .greeting-container {
-    min-height: 40px;
-    font-size: 3rem;
+  .player {
+    flex: 0 0 48%;
   }
+}
 
-  .greeting {
-    padding: 5px;
-  }
-
-  .name {
-    font-size: 3rem;
-    padding: 5px;
-  }
-
-  .slider-icon {
-    scale: 1.5;
-  }
-
-  .quotes {
-    max-height: 100px;
-    overflow: auto;
-  }
-
-  .footer {
-    min-height: 201px;
+@media screen and (min-width:1440px) {
+  body {
+    background: center/cover, rgb(0 0 0 / 30%);
   }
 }
