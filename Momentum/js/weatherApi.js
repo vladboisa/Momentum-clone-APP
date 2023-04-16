@@ -21,7 +21,7 @@ async function getWeather(
   const API_key = `3ca227a7629f53d785660c8f24d59f6d`;
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&lang=${lang}&appid=${API_key}&units=metric`;
   try {
-    const res = await fetch(url, { headers: {} });
+    const res = await fetch(url);
     const data = await res.json();
     if (res.ok) {
       weatherIconElem.className = "weather-icon owf";
@@ -37,11 +37,9 @@ async function getWeather(
     } else {
       weatherErrElem.textContent = `${data.message}`;
       weatherErrElem.classList.add("error");
-      weatherIconElem.className = "weather-icon owf";
-      tempElem.textContent = ``;
-      weatherDescrElem.textContent = ``;
-      weatherWindElem.textContent = ``;
-      weatherHumidityElem.textContent = ``;
+      [tempElem,weatherDescrElem,weatherWindElem,weatherHumidityElem].forEach(elem=>{
+        elem.textContent = ``;
+      })
     }
   } catch (err) {
     weatherErrElem.textContent = `${err}`;

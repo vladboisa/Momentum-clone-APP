@@ -29,11 +29,13 @@ async function setBackgroundBody(
   timeOfDay = greeting.getTimeOfDay(dateTimeObj.getHours()),
   randomNumb = randomImageNumb
 ) {
-  const urlPathOfImages = `assets/img/${timeOfDay}/${String(randomNumb).padStart(2, "0")}.webp`; //If number of image 1digit add '0' for url path
+  const urlPathOfImages = `assets/img/${timeOfDay}/${String(
+    randomNumb,
+  ).padStart(2, "0")}.webp`; //If number of image 1digit add '0' for url path
   preloadBgImages(urlPathOfImages);
   return urlPathOfImages;
 }
-setBackgroundBody();
+
 const slideNextBtn = document.querySelector(".slide-next");
 
 function getSlideNext() {

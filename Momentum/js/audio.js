@@ -14,6 +14,8 @@ const progressBarCurrentTimeElem = document.querySelector(
   ".player-currenttime"
 );
 const progressBarDurationElem = document.querySelector(".player-duration");
+const playListItems = playListElem.children["0"];
+console.log(playListItems);
 //!TODO Styling elem icon when played next song
 //Append song's from playList
 function appendPlayList() {
@@ -31,7 +33,7 @@ function playSongByClick(event) {
   audio.src = playList[event.target.dataset.playListNum].src;
   audio.play();
   event.target.dataset.playListUnicodeContent = `\u2713`; //styling data attribute of ::before elem with unicode Icon of correct
-  event.target.style.setProperty('--color-playlist-item',"#2EFF2E")
+  event.target.style.setProperty("--color-playlist-item", "#2EFF2E");
   playElem.classList.add("pause");
   isPlay = true;
 }
