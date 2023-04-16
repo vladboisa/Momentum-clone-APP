@@ -1,36 +1,33 @@
 .player {
-font-size: 1.3vw;
+  font-size: clamp(1rem, 0.678rem + 1.6102vw, 1.75rem);
+  flex: 0 0 30%;
 }
 
 .player-controls {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-flow: column wrap;
   gap: 5px;
-  width: 180px;
   margin-bottom: 5px;
 }
 
 .player-buttons {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
   gap: 5px;
 }
 
 .styled-progressbar {
   appearance: none;
-  width: var(--width-progress-bar);
+  width: 100%;
   height: var(--height-progress-bar);
   border-radius: calc(var(--height-progress-bar)/2);
   background: hsl(0deg 0% 100% / 30%);
   outline: none;
   opacity: 0.8;
-  transition: .2s;
   transition: opacity .2s;
   box-shadow: 0 0 20px 0 #000a;
   overflow: hidden;
+  border: .5px solid rgba(255 255 255 / 71%);
 }
 
 .styled-progressbar:hover {
@@ -42,17 +39,10 @@ font-size: 1.3vw;
   appearance: none;
   width: calc(var(--height-progress-bar)/1.2);
   border-radius: calc(var(--height-progress-bar)/2);
-  background: linear-gradient(45deg,  rgb(190 167 167), rgb(12 124 79));
+  background: linear-gradient(45deg, rgb(190 167 167), rgb(12 124 79));
   cursor: pointer;
   transition: all 0.2s ease-out;
   box-shadow: calc(-1 * var(--width-progress-bar)) 0 0 calc(0.95 * var(--width-progress-bar)) #49ca74;
-}
-
-input[type='range']::-webkit-slider-runnable-track {
-  height: 15px;
-  appearance: none;
-  color: #13bba4;
-  margin-top: -1px;
 }
 
 .styled-progressbar:hover::-webkit-slider-thumb {
@@ -60,34 +50,46 @@ input[type='range']::-webkit-slider-runnable-track {
   background: linear-gradient(45deg,  rgb(255 252 252), rgb(222 238 225));
 }
 
+.styled-progressbar::-moz-range-thumb {
+  appearance: none;
+  width: calc(var(--height-progress-bar)/2);
+  cursor: pointer;
+}
+
+.styled-progressbar:hover ::-moz-range-thumb {
+  height: var(--height-progress-bar);
+  background: linear-gradient(45deg,  rgb(255 252 252), rgb(222 238 225));
+}
+
+.styled-progressbar::-webkit-slider-runnable-track {
+  appearance: none;
+  height: 15px;
+  color: #13bba4;
+  margin-top: -1px;
+}
+
 .styled-progressbar::-moz-range-progress {
-  background-color: #7adaad;
+  background-color: #49ca74;
   height: var(--height-progress-bar);
   border-radius: calc(var(--height-progress-bar)/2);
 }
 
 .styled-progressbar:hover::-moz-range-progress {
-  background-color: #49ca74;
-
+  background-color: #7adaad;
 }
 
 .player-currenttime::after {
   content: " /";
 }
 
-
-.play-list {
-  text-align: left;
-}
-
 .play-item {
   position: relative;
   padding: 5px;
-  padding-left: 20px;
   list-style: none;
   opacity: .8;
   cursor: pointer;
   transition: .3s;
+  text-align: left;
 }
 
 .play-item:hover {
@@ -97,9 +99,8 @@ input[type='range']::-webkit-slider-runnable-track {
 .play-item::before {
   content: attr(data-play-list-unicode-content);
   color: var(--color-playlist-item);
-  position: absolute;
-  left: 0;
-  top: 2px;
+  position: relative;
+  left: -3px;
   font-weight: 900;
 }
 
@@ -110,9 +111,9 @@ input[type='range']::-webkit-slider-runnable-track {
 .player-icon,
 .slider-icon,
 .change-quote {
-  width: 32px;
-  height: 32px;
-  background-size: 32px 32px;
+  width: 40px;
+  height: 40px;
+  background-size: 40px 40px;
   background-position: center center;
   background-repeat: no-repeat;
   background-color: transparent;
