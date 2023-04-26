@@ -30,8 +30,7 @@ async function setBackgroundBody(
   randomNumb = randomImageNumb,
 ) {
   const paddedRandomImgNumb = String(randomNumb).padStart(2, "0"); //If number of image 1digit add '0' for url path
-  const urlPathOfImages = `../assets/img/${timeOfDay}/${paddedRandomImgNumb}.webp`;
-  const moduleAsset = await import(/* @vite-ignore */ urlPathOfImages); //Dynamic Vite import for image assets
+  const moduleAsset = await import(`../assets/img/${timeOfDay}/${paddedRandomImgNumb}.webp`); //Dynamic Vite import for image assets
   const moduleAssetPath: string = moduleAsset.default;
   preloadBgImages(moduleAssetPath);
 }
