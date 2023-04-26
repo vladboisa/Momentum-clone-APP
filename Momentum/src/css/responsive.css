@@ -7,52 +7,52 @@ body .main {
   padding: 0 10px;
 }
 
-.city {
+body .city {
   width: 100%;
 }
 
-.play-item {
+body .play-item {
   padding: 1px;
 }
 
-.play-list {
+body .play-list {
   transform: translate(0,1rem);
 }
 
-.time {
+body .time {
   margin-bottom: 0;
 }
 
-.slide-prev {
+body .slide-prev {
   left: 10px;
 }
 
-.slide-next {
+body .slide-next {
   right: 10px;
 }
 
-.greeting {
+body .greeting {
   padding: 0 5px 0 0;
 }
 
-.greeting-container {
+body .greeting-container {
   justify-content: center;
 }
 
-.name {
+body .name {
   padding: 0;
   max-width: 40%;
   flex: 0 1 50%;
   width: 100%;
 }
 
-.quotes {
+body .quotes {
   max-height: 100px;
   overflow: auto;
   max-width: 90%;
 }
 
-.footer {
+body .footer {
   min-height: 140px;
   margin-top: 0;
   justify-content:start;
@@ -60,17 +60,17 @@ body .main {
 
 
 @media (max-width:515px) {
-  .play-list {
+  body .play-list {
     transform: translate(0,3rem);
   }
 }
 
 @media screen and (max-width:811px){
-  .weather {
+  body .weather {
     flex: 0 0 51.5%;
   }
 
-  .player {
+  body .player {
     flex: 0 0 48%;
   }
 }
