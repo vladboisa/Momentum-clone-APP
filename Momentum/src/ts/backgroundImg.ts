@@ -1,4 +1,5 @@
-import * as greeting from "./greeting";
+import {getTimeOfDay} from "./greeting";
+import { dateTimeObj } from "./dateAndTime";
 
 const slidePrevBtn = document.querySelector(".slide-prev");
 const bodyElem = document.querySelector("body");
@@ -26,7 +27,7 @@ function preloadBgImages(urlImage: string) {
 }
 
 async function setBackgroundBody(
-  timeOfDay = greeting.getTimeOfDay(new Date().getHours()),
+  timeOfDay = getTimeOfDay(dateTimeObj.getHours()),
   randomNumb = randomImageNumb,
 ) {
   const paddedRandomImgNumb = String(randomNumb).padStart(2, "0"); //If number of image 1digit add '0' for url path

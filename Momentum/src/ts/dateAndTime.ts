@@ -1,4 +1,4 @@
-import { getTimeOfDay, greetingTimeOfDay } from "./greeting";
+export const dateTimeObj = new Date();
 const dateElem = document.querySelector(".date");
 const timeElem = document.querySelector(".time");
 const optionsForLocaleDate: Intl.DateTimeFormatOptions = {
@@ -20,13 +20,11 @@ function showDate(
     dateElem.textContent = currentDate;
   }
 }
+showDate(dateTimeObj, optionsForLocaleDate);
 function showTime() {
-  const dateTimeObj = new Date();
   const currentTime = dateTimeObj.toLocaleTimeString();
   if (timeElem != undefined) {
     timeElem.textContent = currentTime;
-    greetingTimeOfDay(getTimeOfDay(dateTimeObj.getHours()));
-    showDate(dateTimeObj, optionsForLocaleDate);
   }
   // Recursive refresh of a time by setTimeot
   setTimeout(showTime, 1000);
