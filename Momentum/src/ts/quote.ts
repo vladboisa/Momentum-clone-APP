@@ -10,8 +10,8 @@ async function getQuote() {
     const data = await res.json();
 
       if (res.ok){
-        quoteElem.innerHTML = `${data.quote}`;
-        authorElem.innerHTML = `&mdash; ${data.author}`;
+        quoteElem.textContent = `${data.quote}`;
+        authorElem.textContent = `— ${data.author}`;
         quoteElem.setAttribute("cite", `https://dummyjson.com/quotes/${data.id}`);
         quoteErrElem.textContent = ``;
         quoteErrElem.classList.remove("error");
