@@ -1,25 +1,21 @@
 import { playList } from "./playList";
 
-const audio = new Audio();
-let isPlay= false;
+const audio = new Audio(); //instanse for playing audio
+let isPlay = false;
 let songNum = 0;
-audio.src = playList[songNum].src;
-
+audio.src = playList[songNum].src; //Initialize  source of audio element like first elem of playlist
 const playElem = document.querySelector(".play");
 const playNextElem = document.querySelector(".play-next");
 const playPrevElem = document.querySelector(".play-prev");
 const playListElem = document.querySelector(".play-list");
-const progressBarElem: HTMLProgressElement | null = document.querySelector(
+const progressBarElem: HTMLInputElement | null = document.querySelector(
   ".player-progressbar",
 );
 const progressBarCurrentTimeElem = document.querySelector(
   ".player-currenttime",
 );
 const progressBarDurationElem = document.querySelector(".player-duration");
-//TODO Refactor childNodes poprobovat;
-/* const playListItems = playListElem?.children["0"];
-console.log(playListItems); */
-//TODO Styling elem icon when played next song
+
 //* Append song's from playList
 function appendPlayList() {
   playList.forEach((el, _index) => {
@@ -31,23 +27,32 @@ function appendPlayList() {
     playListElem?.appendChild(li);
   });
 }
+appendPlayList();
+const playItemsNodeList = document.querySelectorAll(".play-item"); //*Find Node list Items after appending
 
-//Play song by click on list of item's
+audio.addEventListener("play", () => {
+  const currentPlayItem = playItemsNodeList[songNum] as HTMLLIElement;
+  setPlayListUnicodeContent(currentPlayItem);
+});
+
+//*Check if styling data attribute of ::before elem has unicode Icon of correct
+function setPlayListUnicodeContent(htmlLiElementDataset: HTMLLIElement) {
+  if (htmlLiElementDataset.dataset.playListUnicodeContent === `\u2713`) {
+    return;
+  } else {
+    htmlLiElementDataset.dataset.playListUnicodeContent = `\u2713`;
+    htmlLiElementDataset.style.setProperty("--color-playlist-item", "#2EFF2E");
+  }
+}
+//*Play song by click on list of item's
 function playSongByClick(event: Event) {
   if (event !== null && event.target instanceof HTMLLIElement) {
-    const dataSetplayListNumb = Number(event.target.dataset?.playListNum);
-    audio.src =
-      playList[isNaN(dataSetplayListNumb) ? 0 : dataSetplayListNumb].src;
+    songNum = Number(event.target.dataset?.playListNum ?? 0);
+    audio.src = playList[isNaN(songNum) ? 0 : songNum].src;
     audio.play();
     playElem?.classList.add("pause");
     isPlay = true;
-    //*Check if styling data attribute of ::before elem has unicode Icon of correct
-    if (event.target.dataset.playListUnicodeContent === `\u2713`) {
-      return;
-    } else {
-      event.target.dataset.playListUnicodeContent = `\u2713`;
-      event.target.style.setProperty("--color-playlist-item", "#2EFF2E");
-    }
+    setPlayListUnicodeContent(event.target);
   }
   return;
 }
@@ -83,23 +88,23 @@ function formatTime(seconds: number) {
   return `${min}:${sec < 10 ? `0${sec}` : sec}`; //If Seconds < 10 add 0 before numb of sec
 }
 function updateProgressValue() {
-  if (progressBarElem instanceof HTMLProgressElement) {
-    progressBarElem.max = audio.duration;
-    progressBarElem.value = audio.currentTime;
+  if (progressBarElem instanceof HTMLInputElement) {
+    progressBarElem.max = String(audio.duration ?? 0);
+    progressBarElem.value = String(audio.currentTime ?? 0);
   }
   if (progressBarCurrentTimeElem != undefined) {
-    progressBarCurrentTimeElem.innerHTML = formatTime(
+    progressBarCurrentTimeElem.textContent = formatTime(
       Math.floor(audio.currentTime),
     );
   }
   if (progressBarDurationElem != undefined) {
-    progressBarDurationElem.innerHTML = formatTime(
+    progressBarDurationElem.textContent = formatTime(
       Math.floor(isNaN(audio.duration) ? 0 : audio.duration),
     );
   }
   setTimeout(updateProgressValue, 500);
 }
-
+updateProgressValue();
 playNextElem?.addEventListener("click", playNext);
 playPrevElem?.addEventListener("click", playPrev);
 playElem?.addEventListener("click", playAudio);
@@ -107,7 +112,6 @@ playElem?.addEventListener("click", playAudio);
 audio.addEventListener("ended", playNext);
 //* when slider thumb is dragged - progressBar.value will be changed-
 progressBarElem?.addEventListener("input", () => {
-  audio.currentTime = progressBarElem.value;
+  audio.currentTime = Number(progressBarElem.value ?? 0);
+  updateProgressValue();
 });
-updateProgressValue();
-appendPlayList();
